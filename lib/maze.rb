@@ -7,13 +7,13 @@ class Maze
   def direction
 
     if @direction == "forward"
-      true
+      "true-forward"
     elsif @direction == "left"
-      true
+      "true-left"
     elsif @direction == "right"
-      right()
-    elsif @direction == "backward"
-      backward()
+      "true-right"
+    else @direction == "backward"
+      "true-back"
     end
   end
 
@@ -31,6 +31,9 @@ class Maze
   end
 
   def backward
+
+
+
 
   end
 end

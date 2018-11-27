@@ -12,7 +12,7 @@ post('/start') do
   @selection = params.fetch('start')
 
   direction = Maze.new(@selection)
-  if direction.direction == true
+  if direction.direction == "true-forward"
     erb(:room_two)
   else
     erb(:deadend)
@@ -23,12 +23,38 @@ post('/room2') do
   @selection = params.fetch('select')
 
   direction = Maze.new(@selection)
-  if direction.direction == true
+  if direction.direction == "true-left"
     erb(:room_three)
   else
     erb(:deadend)
   end
 end
+
+post('/room3') do
+  @selection = params.fetch('select')
+
+  direction = Maze.new(@selection)
+  if direction.direction == "true-forward"
+    erb(:room_four)
+  elsif direction.direction == "true-left"
+    erb(:deadend)
+  elsif direction.direction == "true-right"
+    erb(:room_five)
+  else direction.direction == "true-back"
+    erb(:room_two)
+  end
+end
+
+post ('/deadend') do
+  @selection = params.fetch('select')
+  direction = Maze.new(@selection)
+
+  if direction.direction == "true-back"
+      erb(:room_two)
+  end
+end
+
+
 
 
 
